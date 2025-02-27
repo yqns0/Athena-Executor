@@ -1,0 +1,108 @@
+-- Fonction pour vérifier les politiques RLS sur une table
+CREATE OR REPLACE FUNCTION public.get_policies_for_table(table_name text)
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  RETURN (
+    SELECT jsonb_agg(jsonb_build_object(
+      'policyname', policyname,
+      'tablename', tablename,
+      'permissive', permissive,
+      'roles', roles,
+      'cmd', cmd,
+      'qual', qual,
+      'with_check', with_check
+    ))
+    FROM pg_policies
+    WHERE tablename = table_name
+  );
+END;
+$$;
+
+-- Fonction pour désactiver temporairement RLS sur une table
+-- ATTENTION: Ceci est pour le débogage uniquement, à utiliser avec précaution
+CREATE OR REPLACE FUNCTION public.disable_rls_for_table(table_name text)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  EXECUTE format('ALTER TABLE %I DISABLE ROW LEVEL SECURITY', table_name);
+  RETURN true;
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE NOTICE 'Error disabling RLS: %', SQLERRM;
+    RETURN false;
+END;
+$$;
+
+-- Fonction pour forcer la suppression d'un média
+-- Cette fonction s'exécute avec les privilèges du propriétaire de la fonction
+CREATE OR REPLACE FUNCTION public.force_delete_media(media_id text)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  success boolean := false;
+  media_uuid uuid;
+BEGIN
+  -- Convertir le texte en UUID
+  BEGIN
+    media_uuid := media_id::uuid;
+  EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'Erreur de conversion UUID: %', SQLERRM;
+    RETURN false;
+  END;
+
+  -- Supprimer d'abord les relations dans media_tags
+  DELETE FROM public.media_tags WHERE media_id = media_uuid;
+  
+  -- Puis supprimer le média lui-même
+  DELETE FROM public.media WHERE id = media_uuid;
+  
+  -- Vérifier si la suppression a réussi
+  IF NOT EXISTS (SELECT 1 FROM public.media WHERE id = media_uuid) THEN
+    success := true;
+  END IF;
+  
+  RETURN success;
+END;
+$$;
+
+-- Fonction pour forcer la suppression d'une lettre d'amour
+CREATE OR REPLACE FUNCTION public.force_delete_love_letter(letter_id text)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  success boolean := false;
+  letter_uuid uuid;
+BEGIN
+  -- Convertir le texte en UUID
+  BEGIN
+    letter_uuid := letter_id::uuid;
+  EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'Erreur de conversion UUID: %', SQLERRM;
+    RETURN false;
+  END;
+
+  -- Supprimer la lettre
+  DELETE FROM public.love_letters WHERE id = letter_uuid;
+  
+  -- Vérifier si la suppression a réussi
+  IF NOT EXISTS (SELECT 1 FROM public.love_letters WHERE id = letter_uuid) THEN
+    success := true;
+  END IF;
+  
+  RETURN success;
+END;
+$$;
+
+-- Accorder les privilèges d'exécution à anon (utilisateur public)
+GRANT EXECUTE ON FUNCTION public.get_policies_for_table(text) TO anon;
+GRANT EXECUTE ON FUNCTION public.force_delete_media(text) TO anon;
+GRANT EXECUTE ON FUNCTION public.force_delete_love_letter(text) TO anon;
